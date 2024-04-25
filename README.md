@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This Python script is part of a project for the Master’s degree in Computer and Software Engineering at the University of Prishtina, under the guidance of Professor Lule Ahmedi and Assistant Mergim Hoti. The script analyzes traffic data from a futuristic city dataset (`futuristic_city_traffic.csv`) and aims to provide insights into traffic patterns and identify potential anomalies.
+This Python script is part of a project for the Master’s degree in Computer and Software Engineering at the University of Prishtina. It is conducted under the guidance of Professor Lule Ahmedi and Assistant Mergim Hoti. The project is part of the course "Machine Learning" and is taken during the second semester.
 
-The project can potentially demonstrate the synchronization of traffic lights based on city traffic density. By understanding traffic density patterns, it could offer insights into optimizing traffic light timing to improve traffic flow.
+This script analyzes traffic data from a futuristic city dataset (`futuristic_city_traffic.csv`) and aims to provide insights into traffic patterns and identify potential anomalies. The project can potentially demonstrate the synchronization of traffic lights based on city traffic density, offering insights into optimizing traffic light timing to improve traffic flow.
 
 ## Installation
 
@@ -50,10 +50,11 @@ The script will:
 - seaborn
 - matplotlib
 
-## Main Sections
+## Phase I: Model Preparation
 
-1. **Data Loading and Sampling**:
-    
+Phase I involves preparing the model for analyzing traffic data. The dataset consists of 1,048,576 rows and was sourced from Kaggle. For the analysis, a specific percentage of the dataset was used as a sample.
+
+- **Data Loading and Sampling**:
     ```python
     # Load your dataset
     df = pd.read_csv("futuristic_city_traffic.csv")
@@ -68,8 +69,7 @@ The script will:
     - Loads the dataset from `futuristic_city_traffic.csv` using pandas.
     - Calculates and samples 1% of the dataset for analysis, ensuring reproducibility with a random state.
 
-2. **Handling Missing Values**:
-    
+- **Handling Missing Values**:
     ```python
     # Fill missing values with mean
     sampled_data.fillna(sampled_data.mean(numeric_only=True), inplace=True)
@@ -77,8 +77,7 @@ The script will:
 
     - Calculates the mean of numeric columns and fills missing values with the mean.
 
-3. **Isolation Forest Model**:
-    
+- **Isolation Forest Model**:
     ```python
     # Initialize and fit the Isolation Forest model
     clf = IsolationForest(contamination=contamination_threshold, random_state=42)
