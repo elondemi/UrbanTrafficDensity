@@ -86,6 +86,43 @@ Phase I involves preparing the model for analyzing traffic data. The dataset con
 
     - Initializes an Isolation Forest model and predicts outliers.
 
+## Phase II: Model Training
+
+### Overview
+This phase of the project focuses on training and evaluating machine learning models to predict traffic density. Three popular gradient boosting algorithms (LightGBM, XGBoost, and CatBoost) are utilized, along with a baseline linear regression model, to compare their performance in predicting traffic density.
+
+### Data Preparation
+- The dataset is loaded from a CSV file named `cleaned_sample.csv`.
+- Categorical variables are encoded using label encoding.
+- Missing values in numerical columns are filled with the mean of each column.
+- Features are scaled using standard scaling to ensure uniformity and comparability across different features.
+
+### Model Training
+- The dataset is split into training and test sets with a ratio of 80:20.
+- Three gradient boosting models (LightGBM, XGBoost, and CatBoost) and a baseline linear regression model are trained using the training data.
+- Hyperparameters for the models are kept at default values for simplicity.
+
+## Model Evaluation
+- The trained models are evaluated using the test set.
+- Evaluation metrics include Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared (R2).
+- Results are printed out for each model, providing insights into their performance in predicting traffic density.
+
+### Visualization
+- The evaluation results are visualized using bar plots to compare the performance of the models across different metrics (MAE, MSE, R2).
+- Bar plots provide a clear comparison between the models, aiding in model selection and interpretation of results.
+
+### Files Included
+- `cleaned_sample.csv`: Input dataset containing cleaned data for traffic density prediction.
+- `gradient_boosting_model_training.py`: Python script containing code for model training and evaluation.
+- `linear_regression.py`: Python script containing code for linear regression model training and evaluation.
+
+### Usage
+1. Ensure Python environment is set up with necessary libraries installed (`pandas`, `scikit-learn`, `lightgbm`, `xgboost`, `catboost`, `matplotlib`).
+2. Run the `gradient_boosting_model_training.py` and `linear_regression.py` script to train the models and evaluate their performance.
+3. Review the printed evaluation results and visualizations to compare the models.
+4. Analyze the performance of each model and make informed decisions for further model tuning or deployment.
+
+
 ## Figures
 
 Attached figures:
