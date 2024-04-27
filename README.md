@@ -135,6 +135,19 @@ Attached figures:
 
     ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/66006296/5ace6f37-9ab9-4f14-bf24-d48720f9ddb9)
 
+- The visualization in Phase II consists of three bar plots, each representing different evaluation metrics for the trained machine learning models. Here's a breakdown of each bar plot:
+
+    1. **Mean Absolute Error (MAE) Plot**: This plot displays the MAE values for each model (LightGBM, XGBoost, CatBoost) on the y-axis. Each model is represented by a colored bar, with the height of the bar indicating the MAE value. The x-axis shows the names of the           models.
+
+    2. **Mean Squared Error (MSE) Plot**: Similar to the MAE plot, this plot shows the MSE values for each model. The height of each bar represents the MSE value for the corresponding model.
+
+    3. **R-squared (R2) Plot**: This plot visualizes the R-squared values for each model. The R-squared value indicates the proportion of variance in the target variable (traffic density) that is explained by the model. Again, each model is represented by a bar, with         the height indicating the R-squared value.
+
+    The purpose of these bar plots is to provide a visual comparison of the performance of different models across various evaluation metrics. They allow you to easily identify which model performs better in terms of MAE, MSE, and R-squared, aiding in the selection and     interpretation of the best model for predicting traffic density.
+
+  ![image](https://github.com/lorentsinani/UrbanTrafficDensity/assets/66006296/4bbd9691-d24b-4d8a-9ccf-4caed6b62f19)
+
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
