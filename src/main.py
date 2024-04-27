@@ -91,6 +91,8 @@ print(cleaned_df)
 # Calculate average traffic density for each hour of the day
 hourly_avg_density = cleaned_df.groupby('Hour Of Day')['Traffic Density'].mean().reset_index()
 
+cleaned_df.to_csv('cleaned_sample.csv', index=False)
+
 plt.figure(figsize=(10, 6))
 sns.lineplot(data=hourly_avg_density, x='Hour Of Day', y='Traffic Density')
 plt.title('Average Traffic Density by Hour Of Day (Without Outliers)')

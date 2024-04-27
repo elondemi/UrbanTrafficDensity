@@ -6,8 +6,7 @@ from xgboost import XGBRegressor
 from catboost import CatBoostRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-# Load the data
-df = pd.read_csv('futuristic_city_traffic.csv')
+df = pd.read_csv('cleaned_sample.csv')
 
 # Print data types and statistics
 print(df.dtypes)
