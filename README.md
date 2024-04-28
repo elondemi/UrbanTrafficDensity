@@ -136,6 +136,9 @@ Attached figures:
     ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/66006296/5ace6f37-9ab9-4f14-bf24-d48720f9ddb9)
 
 - The visualization in Phase II consists of three bar plots, each representing different evaluation metrics for the trained machine learning models. Here's a breakdown of each bar plot:
+    ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/f0d2bfc8-7ebb-4d7c-a230-e64b7148e1fd)
+
+
 
     1. **Mean Absolute Error (MAE) Plot**: This plot displays the MAE values for each model (LightGBM, XGBoost, CatBoost) on the y-axis. Each model is represented by a colored bar, with the height of the bar indicating the MAE value. The x-axis shows the names of the           models.
 
