@@ -145,7 +145,7 @@ Attached figures:
 
     The purpose of these bar plots is to provide a visual comparison of the performance of different models across various evaluation metrics. They allow you to easily identify which model performs better in terms of MAE, MSE, and R-squared, aiding in the selection and     interpretation of the best model for predicting traffic density.
 
-  ![image](https://github.com/lorentsinani/UrbanTrafficDensity/assets/66006296/4bbd9691-d24b-4d8a-9ccf-4caed6b62f19)
+  ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/224a02c9-21c1-471d-bbdf-e73e80a38782)
 
 
 ## License
