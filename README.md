@@ -89,67 +89,66 @@ Phase I involves preparing the model for analyzing traffic data. The dataset con
 ## Phase II: Model Training
 
 ### Overview
-This phase of the project focuses on training and evaluating machine learning models to predict traffic density. Three popular gradient boosting algorithms (LightGBM, XGBoost, and CatBoost) are utilized, along with a baseline linear regression model, to compare their performance in predicting traffic density.
+This phase focuses on training and evaluating machine learning models to predict traffic density. We explore three popular gradient boosting algorithms (LightGBM, XGBoost, and CatBoost) and a baseline linear regression model to compare their performance in predicting traffic density.
 
 ### Data Preparation
 - The dataset is loaded from a CSV file named `cleaned_sample.csv`.
 - Categorical variables are encoded using label encoding.
 - Missing values in numerical columns are filled with the mean of each column.
-- Features are scaled using standard scaling to ensure uniformity and comparability across different features.
+- Features are scaled using standard scaling for uniformity and comparability across features.
 
 ### Model Training
-- The dataset is split into training and test sets with a ratio of 80:20.
-- Three gradient boosting models (LightGBM, XGBoost, and CatBoost) and a baseline linear regression model are trained using the training data.
-- Hyperparameters for the models are kept at default values for simplicity.
+- The dataset is split into training and test sets with an 80:20 ratio.
+- Three gradient boosting models (LightGBM, XGBoost, CatBoost) and a baseline linear regression model are trained using the training data.
+- Hyperparameters for the models are set to default values for simplicity.
 
-## Model Evaluation
+### Model Evaluation
 - The trained models are evaluated using the test set.
 - Evaluation metrics include Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared (R2).
-- Results are printed out for each model, providing insights into their performance in predicting traffic density.
+- Results are presented for each model, providing insights into their performance in predicting traffic density.
+
+### Comparison and Analysis
+- **Linear Regression**: The linear regression model serves as a baseline. It exhibits a higher error rate and a negative R-squared value, indicating a poor fit for the dataset. This suggests linear regression may not be an effective algorithm for predicting traffic density in our data.
+- **Gradient Boosting Models**: LightGBM, XGBoost, and CatBoost deliver significantly better performance compared to linear regression, with lower MAE and MSE values and higher R-squared scores. These models excel at capturing complex patterns in the data and offer more accurate predictions.
+
+The comparison between linear regression and gradient boosting models demonstrates the superiority of gradient boosting techniques for this task. Using different boosting models provides flexibility in exploring multiple approaches to identify the best strategy for predicting traffic density.
 
 ### Visualization
-- The evaluation results are visualized using bar plots to compare the performance of the models across different metrics (MAE, MSE, R2).
-- Bar plots provide a clear comparison between the models, aiding in model selection and interpretation of results.
+- Evaluation results are visualized using bar plots comparing the performance of models across different metrics (MAE, MSE, and R2).
+- Bar plots offer a clear comparison between models, facilitating model selection and interpretation of results.
 
 ### Files Included
 - `cleaned_sample.csv`: Input dataset containing cleaned data for traffic density prediction.
-- `gradient_boosting_model_training.py`: Python script containing code for model training and evaluation.
-- `linear_regression.py`: Python script containing code for linear regression model training and evaluation.
+- `gradient_boosting_model_training.py`: Python script for model training and evaluation using gradient boosting algorithms.
+- `linear_regression.py`: Python script for linear regression model training and evaluation.
 
 ### Usage
-1. Ensure Python environment is set up with necessary libraries installed (`pandas`, `scikit-learn`, `lightgbm`, `xgboost`, `catboost`, `matplotlib`).
-2. Run the `gradient_boosting_model_training.py` and `linear_regression.py` script to train the models and evaluate their performance.
-3. Review the printed evaluation results and visualizations to compare the models.
-4. Analyze the performance of each model and make informed decisions for further model tuning or deployment.
+1. Set up your Python environment with the required libraries (`pandas`, `scikit-learn`, `lightgbm`, `xgboost`, `catboost`, `matplotlib`).
+2. Run the `gradient_boosting_model_training.py` and `linear_regression.py` scripts to train the models and evaluate their performance.
+3. Review the printed evaluation results and visualizations to compare models.
+4. Analyze each model's performance to make informed decisions for further model tuning or deployment.
 
-
-## Figures
-
-Attached figures:
+### Figures
 
 - **Box plot for numerical columns**:
 
-    ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/66006296/488d9e62-c8fe-42b7-96a7-17ee688c8e3a)
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/66006296/488d9e62-c8fe-42b7-96a7-17ee688c8e3a)
 
 - **Line plot showing average traffic density by hour of the day**:
 
-    ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/66006296/5ace6f37-9ab9-4f14-bf24-d48720f9ddb9)
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/66006296/5ace6f37-9ab9-4f14-bf24-d48720f9ddb9)
 
-- The visualization in Phase II consists of three bar plots, each representing different evaluation metrics for the trained machine learning models. Here's a breakdown of each bar plot:
-    ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/f0d2bfc8-7ebb-4d7c-a230-e64b7148e1fd)
+- **Bar plots**: Phase II includes three bar plots showing the performance of models across different evaluation metrics:
 
+    1. **Mean Absolute Error (MAE) Plot**: This plot shows MAE values for each model (LightGBM, XGBoost, CatBoost) on the y-axis. Each model is represented by a colored bar, with the height of the bar indicating the MAE value.
 
+    2. **Mean Squared Error (MSE) Plot**: Similar to the MAE plot, this plot displays MSE values for each model, with bar heights representing MSE values for each model.
 
-    1. **Mean Absolute Error (MAE) Plot**: This plot displays the MAE values for each model (LightGBM, XGBoost, CatBoost) on the y-axis. Each model is represented by a colored bar, with the height of the bar indicating the MAE value. The x-axis shows the names of the           models.
+    3. **R-squared (R2) Plot**: This plot visualizes R-squared values for each model. The R-squared value indicates the proportion of variance in the target variable (traffic density) that is explained by the model. Models are represented by colored bars, with height representing the R2 value.
 
-    2. **Mean Squared Error (MSE) Plot**: Similar to the MAE plot, this plot shows the MSE values for each model. The height of each bar represents the MSE value for the corresponding model.
+These bar plots provide a visual comparison of different models across various evaluation metrics, aiding in model selection and interpretation.
 
-    3. **R-squared (R2) Plot**: This plot visualizes the R-squared values for each model. The R-squared value indicates the proportion of variance in the target variable (traffic density) that is explained by the model. Again, each model is represented by a bar, with         the height indicating the R-squared value.
-
-    The purpose of these bar plots is to provide a visual comparison of the performance of different models across various evaluation metrics. They allow you to easily identify which model performs better in terms of MAE, MSE, and R-squared, aiding in the selection and     interpretation of the best model for predicting traffic density.
-
-  ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/224a02c9-21c1-471d-bbdf-e73e80a38782)
-
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/224a02c9-21c1-471d-bbdf-e73e80a38782)
 
 ## License
 
