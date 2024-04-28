@@ -148,6 +148,12 @@ The comparison between linear regression and gradient boosting models demonstrat
 
 These bar plots provide a visual comparison of different models across various evaluation metrics, aiding in model selection and interpretation.
 
+- **Linear Regression Results Visualization**:
+
+    ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/f0d2bfc8-7ebb-4d7c-a230-e64b7148e1fd)
+
+    This image visualizes the results of the linear regression model, providing insights into its performance in predicting traffic density. The plot shows how the model performs compared to actual traffic density values, highlighting areas where the model may underperform.
+
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/224a02c9-21c1-471d-bbdf-e73e80a38782)
 
 ## License
