@@ -160,6 +160,8 @@ These bar plots provide a visual comparison of different models across various e
 ## Phase III: Application of Machine Learning Tool
 
 Phase III involves the application of machine learning tools to analyze and visualize the futuristic city traffic dataset. In this phase, we utilize Python libraries such as pandas, numpy, seaborn, and matplotlib to perform data analysis and visualization.
+Phase III involves evaluating and selecting the best-performing machine learning models for predicting traffic density in the futuristic city environment. We use various regression techniques and ensemble methods to build and assess the performance of these models.
+
 
 ### Data Analysis and Visualization
 
@@ -230,6 +232,68 @@ plt.ylabel('Energy Consumption')
 plt.show()
 
 print("Correlation between Speed and Energy Consumption:", correlation_speed_energy)
+
+
+# Encoding Categorical Variables
+
+object_data = ohe.fit_transform(object_data)
+
+
+
+# Removing Outliers (Z-Score Method)
+z_scores = stats.zscore(numeric_data)
+threshold = 3
+outliers_zscore = (abs(z_scores) > threshold).any(axis=1)
+numeric_data = numeric_data[~outliers_zscore]
+
+
+# Removing Outliers (IQR Method)
+Q1 = numeric_data.quantile(0.25)
+Q3 = numeric_data.quantile(0.75)
+IQR = Q3 - Q1
+outliers = ((numeric_data < (Q1 - 1.5 * IQR)) | (numeric_data > (Q3 + 1.5 * IQR))).any(axis=1)
+numeric_data = numeric_data[~outliers]
+
+# Model Training and Evaluation
+## 1. Ridge Regression
+
+ridge = Ridge()
+grid = GridSearchCV(estimator=ridge,param_grid=param_grid,cv=5,n_jobs=-1)
+grid.fit(X_train,y_train)
+
+
+## 2. Elastic Net Regression
+elastico = ElasticNet()
+elasticgrid = GridSearchCV(estimator=elastico,param_grid=param_grid,n_jobs=-1,scoring='neg_mean_squared_error',cv=10)
+elasticgrid.fit(X_train,y_train)
+
+
+## 3. Random Forest Regressor
+rfr = RandomForestRegressor()
+randomforestgrid = GridSearchCV(estimator=rfr,param_grid=random_grid,cv=3,n_jobs=-1,scoring='neg_mean_squared_error')
+randomforestgrid.fit(X_train,y_train)
+
+
+## 4. XGBoost Regressor
+xgb_model = XGBRegressor()
+grid_searchxgb = GridSearchCV(estimator=xgb_model, param_grid=param_grid, cv=3, scoring='neg_mean_squared_error',n_jobs=-1)
+grid_searchxgb.fit(X_train,y_train)
+
+
+## 5. LightGBM Regressor
+lgb_model = LGBMRegressor()
+grid_searchlgb = GridSearchCV(estimator=lgb_model, param_grid=param_grid, cv=3, scoring='neg_mean_squared_error',n_jobs=-1)
+grid_searchlgb.fit(X_train,y_train)
+
+
+## 6. Linear Regression
+normal_model = LinearRegression(n_jobs=-1)
+normal_model.fit(X_train,y_train)
+
+
+#Model Performance Evaluation
+We evaluate the performance of each model using Mean Absolute Error (MAE) and Mean Squared Error (MSE) to assess accuracy and precision in predicting traffic density.
+
 
 
 
