@@ -404,6 +404,15 @@ normal_model.fit(X_train,y_train)
 
 We evaluate the performance of each model using Mean Absolute Error (MAE) and Mean Squared Error (MSE) to assess accuracy and precision in predicting traffic density.
 
+## Visualisation of what we archived:
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/278f2bf8-b691-4a28-865e-6dfa92d86438)
+
+Some numeric results to be precise in what we are talking about:
+
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/7f361088-7b01-4996-a2de-6e1916700c49)
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/c1665920-9797-4d6b-a474-ce6b51d8d17f)
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/0ea14733-d1da-48f1-9f30-225a65235ede)
+
 
 
 ## License
