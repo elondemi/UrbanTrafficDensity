@@ -274,8 +274,10 @@ plt.show()
 
 
 print("Correlation between Speed and Energy Consumption:", correlation_speed_energy)
-
 ```
+
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/94fd1bc1-63c4-454c-b494-dbdd5f0a2021)
+
 # Encoding Categorical Variables
 ```python
 
