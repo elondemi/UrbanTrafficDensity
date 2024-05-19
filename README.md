@@ -179,9 +179,16 @@ dataset = pd.read_csv('futuristic_city_traffic.csv')
 
 # Visualization 
 ## Density of traffic based on the city
+The visualization below displays the average traffic density based on different cities in the dataset.
+
+
 ```python
 traffic_city = dataset.groupby('City')['Traffic Density'].mean().reset_index()
+```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/ebc28a87-fb36-412a-bd93-a242a23e1b7f)
+
+
+```python
 
 plt.bar(data=traffic_city, x=traffic_city['City'], height=traffic_city['Traffic Density'])
 plt.title('Average Traffic Density Based on City')
@@ -190,14 +197,24 @@ plt.show()
 ```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/d5fa1b8a-3dc2-4515-aa80-85ae5f8e70b5)
 
+The bar plot illustrates significant variations in traffic density across different cities. Observing these disparities can provide valuable insights for urban planners and policymakers in understanding traffic patterns and allocating resources efficiently. For instance, cities with higher average traffic density may require infrastructure improvements or alternative transportation solutions to mitigate congestion and enhance mobility.
+
+By examining this visualization, we can identify cities where traffic density is particularly high or low, allowing stakeholders to prioritize interventions and investments accordingly.
+
+In future iterations of this project, further analysis could explore the underlying factors contributing to variations in traffic density among different cities. Additionally, integrating real-time traffic data and predictive modeling techniques could enhance the accuracy and relevance of traffic management strategies.
+
 
 
 ## Density of traffic based on the Weather
+The following visualization illustrates the average traffic density categorized by different weather conditions.
+
 
 ```python
 traffic_weather = dataset.groupby('Weather')['Traffic Density'].mean().reset_index()
+```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/59852d8b-d91e-48a5-9d2a-2e2d5a9b973d)
 
+```python
 
 plt.bar(data=traffic_weather, x=traffic_weather['Weather'], height=traffic_weather['Traffic Density'])
 plt.title('Average Traffic Density Based on Weather')
@@ -207,13 +224,20 @@ plt.show()
 
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/13bc981e-672a-4d78-8d68-55254b47ed28)
 
+This bar plot provides insights into how weather conditions impact traffic density.
 
+In urban planning and transportation management, understanding the relationship between weather and traffic density is crucial for optimizing traffic flow and ensuring road safety. Inclement weather conditions such as rain, snow, or fog often lead to decreased visibility and increased travel time, resulting in higher traffic congestion. By analyzing historical traffic data under different weather conditions, authorities can implement targeted strategies such as adaptive traffic signal control or weather-responsive routing to alleviate congestion and enhance road safety during adverse weather events.
 
 ## Amount of vehicle types from each category
+The visualization below illustrates the distribution of vehicle types across different categories in the dataset.
+
+
 ```python
 cars = dataset['Vehicle Type'].value_counts().reset_index()
+```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/c1e242bf-f969-416e-b935-73ad9e672166)
 
+```python
 
 plt.pie(labels=cars['index'], x=cars['Vehicle Type'], autopct='%1.1f%%')
 plt.legend()
@@ -221,14 +245,31 @@ plt.show()
 ```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/685268b1-7449-430a-825a-001af646a78e)
 
+This pie chart provides a comprehensive overview of the composition of vehicles in the dataset, categorized by type. Understanding the distribution of vehicle types is essential for various stakeholders involved in urban transportation planning, infrastructure development, and environmental impact assessment.
+
+By analyzing the proportion of different vehicle types, policymakers and transportation authorities can make informed decisions regarding infrastructure investments, public transit planning, and emissions reduction strategies. For instance, a high percentage of private vehicles may indicate a need for improved public transportation options or incentives for carpooling and ridesharing to alleviate traffic congestion and reduce carbon emissions.
+
+
+
 # Correlation analysis
 ## Does Traffic density increase of decrease energy consumption
+To explore the relationship between traffic density and energy consumption, we calculated the correlation coefficient between these two variables.
 ```python
 
 correlation = dataset['Energy Consumption'].corr(dataset['Traffic Density'])
 //0.01584834966727215
 ```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/733456bd-a10c-44e9-9cb5-150b21cf07e3)
+
+
+The correlation coefficient of approximately 0.0158 suggests a very weak positive correlation between traffic density and energy consumption. While this correlation is statistically significant due to the large dataset, its practical significance is minimal.
+
+This weak correlation indicates that changes in traffic density have only a marginal impact on energy consumption. Other factors such as vehicle efficiency, driving behaviors, road conditions, and infrastructure play more substantial roles in determining energy consumption patterns.
+
+From a policy perspective, understanding the relationship between traffic density and energy consumption is essential for developing sustainable transportation strategies. While reducing traffic congestion can potentially lead to energy savings, it is crucial to consider holistic approaches that promote energy-efficient vehicles, alternative transportation modes, and infrastructure improvements to achieve meaningful reductions in energy consumption and environmental impact.
+
+In future analyses, exploring the interplay between traffic density, energy consumption, and environmental factors such as air quality and carbon emissions could provide deeper insights into the complex dynamics of urban transportation systems and inform evidence-based policy decisions.
+
 
 ## Visualization
 
@@ -243,7 +284,7 @@ print("Correlation between Energy Consumption and Traffic Density:", correlation
 ```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/5f61976c-760d-432a-b78c-96f9fb78a67a)
 
-
+This scatter plot depicts the relationship between energy consumption and traffic density. Despite a weak positive correlation (correlation coefficient ≈ 0.0158), as shown in the scatter plot, no clear linear trend emerges. Understanding this relationship is crucial for optimizing urban transportation and energy efficiency strategies.
 
 
 ## Average speed of every vehicle
@@ -258,7 +299,9 @@ print("Average Speed of Every Vehicle Type:\n", average_speed)
 ```
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/e5d4bcb9-f417-491c-bfcb-716f348dfd30)
 
+This bar plot displays the average speed of each vehicle type. Understanding the speed characteristics of different vehicle types is essential for traffic management and infrastructure planning.
 
+Analyzing the average speed of vehicles can help identify congestion hotspots, optimize traffic flow, and improve road safety. Additionally, it informs decisions regarding speed limits, lane configurations, and traffic signal timing to enhance overall transportation efficiency.
 
 ## Does a car consume more energy when moving faster?
 ```python
@@ -277,6 +320,12 @@ print("Correlation between Speed and Energy Consumption:", correlation_speed_ene
 ```
 
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/94fd1bc1-63c4-454c-b494-dbdd5f0a2021)
+
+This scatter plot illustrates the relationship between car speed and energy consumption. We calculate the correlation coefficient to measure the strength of this relationship.
+
+Analyzing this correlation helps us understand the energy efficiency of different driving speeds. While the scatter plot indicates a positive correlation, suggesting that cars tend to consume more energy at higher speeds, the correlation coefficient quantifies this relationship.
+
+By comprehending the impact of speed on energy consumption, policymakers and vehicle manufacturers can develop strategies to promote energy-efficient driving behaviors and improve fuel economy.
 
 # Encoding Categorical Variables
 ```python
