@@ -156,6 +156,83 @@ These bar plots provide a visual comparison of different models across various e
 
 ![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/224a02c9-21c1-471d-bbdf-e73e80a38782)
 
+
+## Phase III: Application of Machine Learning Tool
+
+Phase III involves the application of machine learning tools to analyze and visualize the futuristic city traffic dataset. In this phase, we utilize Python libraries such as pandas, numpy, seaborn, and matplotlib to perform data analysis and visualization.
+
+### Data Analysis and Visualization
+
+We start by loading the dataset `futuristic_city_traffic.csv` using pandas:
+
+```python
+import pandas as pd
+
+dataset = pd.read_csv('futuristic_city_traffic.csv')
+
+
+traffic_city = dataset.groupby('City')['Traffic Density'].mean().reset_index()
+
+# Visualization
+plt.bar(data=traffic_city, x=traffic_city['City'], height=traffic_city['Traffic Density'])
+plt.title('Average Traffic Density Based on City')
+plt.xticks(rotation=90)
+plt.show()
+
+
+traffic_weather = dataset.groupby('Weather')['Traffic Density'].mean().reset_index()
+
+# Visualization
+plt.bar(data=traffic_weather, x=traffic_weather['Weather'], height=traffic_weather['Traffic Density'])
+plt.title('Average Traffic Density Based on Weather')
+plt.xticks(rotation=90)
+plt.show()
+
+
+cars = dataset['Vehicle Type'].value_counts().reset_index()
+
+# Visualization
+plt.pie(labels=cars['index'], x=cars['Vehicle Type'], autopct='%1.1f%%')
+plt.legend()
+plt.show()
+
+
+# Correlation analysis
+correlation = dataset['Energy Consumption'].corr(dataset['Traffic Density'])
+
+# Visualization
+plt.scatter(data=dataset, x='Energy Consumption', y='Traffic Density')
+plt.xlabel('Energy Consumption')
+plt.ylabel('Traffic Density')
+plt.show()
+
+print("Correlation between Energy Consumption and Traffic Density:", correlation)
+
+
+every_hour_density = dataset.groupby('hour/day')['Traffic Density'].mean().sort_values(ascending=False)
+
+# Visualization
+# [Insert visualization code here]
+
+
+average_speed = dataset.groupby('Vehicle Type')['Speed'].mean()
+
+print("Average Speed of Every Vehicle Type:\n", average_speed)
+
+
+# Correlation analysis
+correlation_speed_energy = dataset['Energy Consumption'].corr(dataset['Speed'])
+
+# Visualization
+plt.scatter(x='Speed', y='Energy Consumption', data=dataset)
+plt.xlabel('Speed of the Car')
+plt.ylabel('Energy Consumption')
+plt.show()
+
+print("Correlation between Speed and Energy Consumption:", correlation_speed_energy)
+
+
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
