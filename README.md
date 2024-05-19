@@ -171,41 +171,54 @@ We start by loading the dataset `futuristic_city_traffic.csv` using pandas:
 import pandas as pd
 
 dataset = pd.read_csv('futuristic_city_traffic.csv')
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/d5cb593c-d6cf-49e8-8f84-41822403457d)
 
 
-traffic_city = dataset.groupby('City')['Traffic Density'].mean().reset_index()
+
+
 ```
 # Visualization 
 ## Density of traffic based on the city
 ```python
+traffic_city = dataset.groupby('City')['Traffic Density'].mean().reset_index()
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/ebc28a87-fb36-412a-bd93-a242a23e1b7f)
 
 plt.bar(data=traffic_city, x=traffic_city['City'], height=traffic_city['Traffic Density'])
 plt.title('Average Traffic Density Based on City')
 plt.xticks(rotation=90)
 plt.show()
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/d5fa1b8a-3dc2-4515-aa80-85ae5f8e70b5)
 
 
-traffic_weather = dataset.groupby('Weather')['Traffic Density'].mean().reset_index()
 ```
 
 ## Density of traffic based on the Weather
 
 ```python
+traffic_weather = dataset.groupby('Weather')['Traffic Density'].mean().reset_index()
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/59852d8b-d91e-48a5-9d2a-2e2d5a9b973d)
+
 
 plt.bar(data=traffic_weather, x=traffic_weather['Weather'], height=traffic_weather['Traffic Density'])
 plt.title('Average Traffic Density Based on Weather')
 plt.xticks(rotation=90)
 plt.show()
 
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/13bc981e-672a-4d78-8d68-55254b47ed28)
 
-cars = dataset['Vehicle Type'].value_counts().reset_index()
+
+
 ```
 ## Amount of vehicle types from each category
 ```python
+cars = dataset['Vehicle Type'].value_counts().reset_index()
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/c1e242bf-f969-416e-b935-73ad9e672166)
+
 
 plt.pie(labels=cars['index'], x=cars['Vehicle Type'], autopct='%1.1f%%')
 plt.legend()
 plt.show()
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/685268b1-7449-430a-825a-001af646a78e)
 
 ```
 # Correlation analysis
@@ -213,6 +226,9 @@ plt.show()
 ```python
 
 correlation = dataset['Energy Consumption'].corr(dataset['Traffic Density'])
+//0.01584834966727215
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/733456bd-a10c-44e9-9cb5-150b21cf07e3)
+
 ```
 ## Visualization
 
@@ -223,21 +239,28 @@ plt.xlabel('Energy Consumption')
 plt.ylabel('Traffic Density')
 plt.show()
 
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/5f61976c-760d-432a-b78c-96f9fb78a67a)
+
+
 print("Correlation between Energy Consumption and Traffic Density:", correlation)
 
 
-every_hour_density = dataset.groupby('hour/day')['Traffic Density'].mean().sort_values(ascending=False)
 ```
 ## Average speed of every vehicle
 ```python
+every_hour_density = dataset.groupby('hour/day')['Traffic Density'].mean().sort_values(ascending=False)
+
+![image](https://github.com/elondemi/UrbanTrafficDensity/assets/84631230/e5d4bcb9-f417-491c-bfcb-716f348dfd30)
 
 
 average_speed = dataset.groupby('Vehicle Type')['Speed'].mean()
 
 print("Average Speed of Every Vehicle Type:\n", average_speed)
 
+
+
 ```
-## Does a car consume more energy when moving faster
+## Does a car consume more energy when moving faster?
 ```python
 
 correlation_speed_energy = dataset['Energy Consumption'].corr(dataset['Speed'])
@@ -247,6 +270,8 @@ plt.scatter(x='Speed', y='Energy Consumption', data=dataset)
 plt.xlabel('Speed of the Car')
 plt.ylabel('Energy Consumption')
 plt.show()
+
+
 
 print("Correlation between Speed and Energy Consumption:", correlation_speed_energy)
 
